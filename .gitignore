@@ -1,0 +1,49 @@
+# ======================
+# Dependencies & builds
+# ======================
+node_modules/
+dist/
+**/dist/
+.pnpm-store/
+
+# ======================
+# Logs & runtime files
+# ======================
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# ======================
+# Environment variables
+# ======================
+.env
+.env.*
+!.env.example
+
+# ======================
+# OS / Editor
+# ======================
+.DS_Store
+.vscode/
+.idea/
+
+# ======================
+# TypeScript cache
+# ======================
+*.tsbuildinfo
+
+# ======================
+# Docker / infra
+# ======================
+docker-data/
+*.pid
+
+# ======================
+# Test / coverage
+# ======================
+coverage/
+
+# ======================
+# Misc
+# ======================
+tmp/
