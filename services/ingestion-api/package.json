@@ -12,6 +12,7 @@
     "@types/express": "^5.0.6"
   },
   "dependencies": {
+    "@analytics/clients": "workspace:*",
     "express": "^5.2.1"
   }
 }

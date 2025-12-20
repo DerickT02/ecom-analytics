@@ -37,6 +37,7 @@ pnpm-debug.log*
 # ======================    
 docker-data/
 *.pid
+dist
 
 # ======================
 # Test / coverage
