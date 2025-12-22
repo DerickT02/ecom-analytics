@@ -65,7 +65,14 @@ importers:
         specifier: ^5.0.6
         version: 5.0.6
 
-  services/stream-processor: {}
+  services/stream-processor:
+    dependencies:
+      '@analytics/clients':
+        specifier: workspace:*
+        version: link:../../packages/clients
+      express:
+        specifier: ^5.2.1
+        version: 5.2.1
 
 packages:
 

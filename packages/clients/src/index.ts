@@ -8,3 +8,7 @@ const kafka = new Kafka({
 export function createProducer() {
     return kafka.producer();
 }
+
+export function createConsumer(consumer_name: string) {
+    return kafka.consumer({ groupId: consumer_name });
+}

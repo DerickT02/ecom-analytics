@@ -7,18 +7,30 @@ await producer.connect();
 
 
 app.post("/v1/events", async (req, res) => {
-  const { tenantId, events } = req.body;
+  try {
+    const tenantId = req.body?.tenantId ?? "unknown";
+    const events = Array.isArray(req.body?.events) ? req.body.events : [];
 
-  await producer.send({
-    topic: "events_raw",
-    messages: events.map((event: any) => ({
-      key: tenantId,
-      value: JSON.stringify(event)
-    }))
-  });
+    console.log("received", events.length, "events for tenant", tenantId);
 
-  res.json({ ok: true, count: events.length });
+    if (events.length === 0) {
+      return res.status(400).json({ ok: false, error: "events must be a non-empty array" });
+    }
 
+    await producer.send({
+      topic: "events_raw",
+      messages: events.map((e: any) => ({
+        key: tenantId,
+        value: JSON.stringify(e),
+      })),
+    });
+
+    console.log("published", events.length, "events to Kafka");
+    res.json({ ok: true, count: events.length });
+  } catch (err) {
+    console.error("FAILED TO PUBLISH TO KAFKA:", err);
+    res.status(500).json({ ok: false, error: String(err) });
+  }
 });
 
 app.listen(3000, () => console.log("ingestion-api on http://localhost:3000"));
