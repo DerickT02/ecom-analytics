@@ -17,13 +17,16 @@ app.post("/v1/events", async (req, res) => {
       return res.status(400).json({ ok: false, error: "events must be a non-empty array" });
     }
 
-    await producer.send({
-      topic: "events_raw",
-      messages: events.map((e: any) => ({
-        key: tenantId,
-        value: JSON.stringify(e),
-      })),
-    });
+ await producer.send({
+  topic: "events_raw",
+  messages: [{
+    key: tenantId,
+    value: JSON.stringify({
+      tenantId,
+      events
+    })
+  }]
+});
 
     console.log("published", events.length, "events to Kafka");
     res.json({ ok: true, count: events.length });
