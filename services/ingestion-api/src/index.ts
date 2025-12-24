@@ -19,13 +19,10 @@ app.post("/v1/events", async (req, res) => {
 
  await producer.send({
   topic: "events_raw",
-  messages: [{
+  messages: events.map((event: any) => ({
     key: tenantId,
-    value: JSON.stringify({
-      tenantId,
-      events
-    })
-  }]
+    value: JSON.stringify(event),
+  })),
 });
 
     console.log("published", events.length, "events to Kafka");
