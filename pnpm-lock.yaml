@@ -60,6 +60,9 @@ importers:
 
   services/query-api:
     dependencies:
+      '@clickhouse/client':
+        specifier: ^1.15.0
+        version: 1.15.0
       express:
         specifier: ^5.2.1
         version: 5.2.1

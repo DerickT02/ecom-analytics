@@ -12,6 +12,7 @@
     "@types/express": "^5.0.6"
   },
   "dependencies": {
+    "@clickhouse/client": "^1.15.0",
     "express": "^5.2.1"
   }
 }
