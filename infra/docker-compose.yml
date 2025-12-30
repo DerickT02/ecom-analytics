@@ -34,7 +34,20 @@ services:
         fi
         /opt/kafka/bin/kafka-server-start.sh /opt/kafka/config/kraft/server.properties
       '
+  minio:
+    image: minio/minio:latest
+    container_name: minio
+    ports:
+      - "9002:9000"   # host:container
+      - "9003:9001"
+    environment:
+      MINIO_ROOT_USER: minio
+      MINIO_ROOT_PASSWORD: minio_password
+    command: server /data --console-address ":9001"
+    volumes:
+      - minio_data:/data
 
 volumes:
   kafka-data:
   clickhouse_data:
+  minio_data:
