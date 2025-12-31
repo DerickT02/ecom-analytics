@@ -5,15 +5,19 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev:services": "concurrently -k -n ingestion,query,stream \"pnpm --filter @analytics/ingestion-api dev\" \"pnpm --filter @analytics/query-api dev\" \"pnpm --filter @analytics/stream-processor dev\""
+    "dev:services": "concurrently -k -n ingestion,query,stream \"pnpm --filter @analytics/ingestion-api dev\" \"pnpm --filter @analytics/query-api dev\" \"pnpm --filter @analytics/stream-processor dev\"",
+    "k6:build": "esbuild tools/k6-ingest.ts --bundle --platform=neutral --target=es2017 --external:k6 --external:k6/* --outfile=tools/dist/k6-ingest.js",
+    "k6:run": "pnpm run k6:build && k6 run tools/dist/k6-ingest.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "packageManager": "pnpm@10.25.0",
   "devDependencies": {
+    "@types/k6": "^1.4.0",
     "@types/node": "^25.0.3",
     "concurrently": "^9.2.1",
+    "esbuild": "^0.27.2",
     "ts-node": "^10.9.2",
     "typescript": "^5.9.3"
   }
