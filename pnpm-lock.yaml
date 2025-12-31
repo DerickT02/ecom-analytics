@@ -8,12 +8,18 @@ importers:
 
   .:
     devDependencies:
+      '@types/k6':
+        specifier: ^1.4.0
+        version: 1.4.0
       '@types/node':
         specifier: ^25.0.3
         version: 25.0.3
       concurrently:
         specifier: ^9.2.1
         version: 9.2.1
+      esbuild:
+        specifier: ^0.27.2
+        version: 0.27.2
       ts-node:
         specifier: ^10.9.2
         version: 10.9.2(@types/node@25.0.3)(typescript@5.9.3)
@@ -692,6 +698,9 @@ packages:
 
   '@types/http-errors@2.0.5':
     resolution: {integrity: sha512-r8Tayk8HJnX0FztbZN7oVqGccWgw98T/0neJphO91KkmOzug1KkofZURD4UaD5uH8AqcFLfdPErnBod0u71/qg==}
+
+  '@types/k6@1.4.0':
+    resolution: {integrity: sha512-2tgKVnzNXZTZT1TDAGLY/3cuvHPZLyOF751N7M8T2dBgWzInzUVZYjGn9zVW01S1yNLqAr1az9gctyJHTW6GRQ==}
 
   '@types/node@25.0.3':
     resolution: {integrity: sha512-W609buLVRVmeW693xKfzHeIV6nJGGz98uCPfeXI1ELMLXVeKYZ9m15fAMSaUPBHYLGFsVRcMmSCksQOrZV9BYA==}
@@ -2379,6 +2388,8 @@ snapshots:
       '@types/serve-static': 2.2.0
 
   '@types/http-errors@2.0.5': {}
+
+  '@types/k6@1.4.0': {}
 
   '@types/node@25.0.3':
     dependencies:
